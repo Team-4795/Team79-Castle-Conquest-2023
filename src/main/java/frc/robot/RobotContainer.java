@@ -10,6 +10,7 @@ import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.RomiDrivetrain;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
@@ -49,7 +50,15 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    
+    m_controller.a().onTrue(Commands.runOnce(() -> {m_Arm.RotateForward();}, m_Arm));
+    m_controller.y().onTrue(Commands.runOnce(()->{m_Arm.RotateBackward();}, m_Arm));
+    m_controller.x().onTrue(Commands.runOnce(()->{m_Intake.spinin();}, m_Intake));
+    m_controller.b().onTrue(Commands.runOnce(()->{m_Intake.spinout();}, m_Intake));
+    m_controller.y().onFalse(Commands.runOnce(()->{m_Arm.STOP();}, m_Arm));
+    m_controller.a().onFalse(Commands.runOnce(() -> {m_Arm.STOP();}, m_Arm));
+    m_controller.x().onFalse(Commands.runOnce(()->{m_Intake.nocoolspin();}, m_Intake));
+    m_controller.b().onFalse(Commands.runOnce(()->{m_Intake.nocoolspin();}, m_Intake));
+
 
   }
 
