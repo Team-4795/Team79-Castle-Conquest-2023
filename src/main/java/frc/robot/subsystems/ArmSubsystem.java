@@ -6,8 +6,8 @@ import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ArmSubsystem extends SubsystemBase {
-    private PWMVictorSPX RightArmMotor = new PWMVictorSPX(0);
-    private PWMVictorSPX LeftArmMotor = new PWMVictorSPX(1);
+    private PWMVictorSPX RightArmMotor = new PWMVictorSPX(2);
+    private PWMVictorSPX LeftArmMotor = new PWMVictorSPX(3);
 
     public ArmSubsystem (){
         RightArmMotor.setInverted(true);

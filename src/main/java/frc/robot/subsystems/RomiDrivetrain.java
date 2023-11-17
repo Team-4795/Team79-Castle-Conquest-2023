@@ -21,21 +21,13 @@ public class RomiDrivetrain extends SubsystemBase {
 
 
 
-  // The Romi has onboard encoders that are hardcoded
-  // to use DIO pins 4/5 and 6/7 for the left and right
-  private final Encoder m_leftEncoder = new Encoder(4, 5);
-  private final Encoder m_rightEncoder = new Encoder(6, 7);
 
   // Set up the differential drive controller
   private final DifferentialDrive m_diffDrive = new DifferentialDrive(m_leftMotor, m_rightMotor);
 
   /** Creates a new RomiDrivetrain. */
   public RomiDrivetrain() {
-    // Use inches as unit for encoder distances
-    m_leftEncoder.setDistancePerPulse((Math.PI * kWheelDiameterInch) / kCountsPerRevolution);
-    m_rightEncoder.setDistancePerPulse((Math.PI * kWheelDiameterInch) / kCountsPerRevolution);
-    resetEncoders();
-
+    
     // Invert right side since motor is flipped
     m_rightMotor.setInverted(true);
   }
@@ -44,18 +36,7 @@ public class RomiDrivetrain extends SubsystemBase {
     m_diffDrive.arcadeDrive(xaxisSpeed, zaxisRotate);
   }
 
-  public void resetEncoders() {
-    m_leftEncoder.reset();
-    m_rightEncoder.reset();
-  }
 
-  public double getLeftDistanceInch() {
-    return m_leftEncoder.getDistance();
-  }
-
-  public double getRightDistanceInch() {
-    return m_rightEncoder.getDistance();
-  }
 
   @Override
   public void periodic() {

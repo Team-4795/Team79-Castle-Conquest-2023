@@ -32,6 +32,8 @@ public class RobotContainer {
 
   private CommandXboxController m_controller = new CommandXboxController(0);
 
+  private Command auto = new RunCommand(() -> m_romiDrivetrain.arcadeDrive(1,0), m_romiDrivetrain).withTimeout(5).alongWith(new RunCommand(m_Arm::RotateForward).withTimeout(1)); 
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
 
@@ -69,6 +71,9 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return m_autoCommand;
+    
+    return auto;
+
+  
   }
 }
