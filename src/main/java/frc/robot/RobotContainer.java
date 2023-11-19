@@ -32,7 +32,10 @@ public class RobotContainer {
 
   private CommandXboxController m_controller = new CommandXboxController(0);
 
-  private Command auto = new RunCommand(() -> m_romiDrivetrain.arcadeDrive(1,0), m_romiDrivetrain).withTimeout(5).alongWith(new RunCommand(m_Arm::RotateForward).withTimeout(1)); 
+  private Command auto = new RunCommand(() -> m_romiDrivetrain.arcadeDrive(1,0), m_romiDrivetrain).withTimeout(5).alongWith(new RunCommand(m_Arm::RotateForward).withTimeout(1)).andThen(new RunCommand(m_Intake::spinout)).withTimeout(2).andThen(new RunCommand(()-> m_romiDrivetrain.arcadeDrive(-1, 0))).withTimeout(2).alongWith(new RunCommand(m_Arm::RotateBackward).withTimeout(1)).andThen(new RunCommand(()-> m_romiDrivetrain.arcadeDrive(0, 1))).withTimeout(.5).andThen(new RunCommand(()-> m_romiDrivetrain.arcadeDrive(1, 0))).withTimeout(3);
+
+//All time in seconds MUST be changed after testing, they are just place holders
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
