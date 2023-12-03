@@ -16,12 +16,12 @@ public class ArmSubsystem extends SubsystemBase {
     }
 
     public void RotateForward(){
-        RightArmMotor.set(0.8);
-        LeftArmMotor.set(0.8);
+        RightArmMotor.set(0.7);
+        LeftArmMotor.set(0.7);
     }
     public void RotateBackward(){
-        RightArmMotor.set(-0.8);
-        LeftArmMotor.set(-0.8);
+        RightArmMotor.set(-0.7);
+        LeftArmMotor.set(-0.7);
     }
     public void STOP(){
         RightArmMotor.set(0);

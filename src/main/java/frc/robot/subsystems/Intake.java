@@ -11,10 +11,10 @@ public class Intake extends SubsystemBase{
     }
 
     public void spinin(){
-        coolspin.set(.8);
+        coolspin.set(-1);
     }
     public void spinout(){
-        coolspin.set(-.8);
+        coolspin.set(1);
     }
     public void nocoolspin(){
         coolspin.set(0);

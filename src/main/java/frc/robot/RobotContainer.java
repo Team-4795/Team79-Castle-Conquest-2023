@@ -32,7 +32,7 @@ public class RobotContainer {
 
   private CommandXboxController m_controller = new CommandXboxController(0);
 
-  private Command auto = new RunCommand(() -> m_romiDrivetrain.arcadeDrive(1,0), m_romiDrivetrain).withTimeout(5)
+  private Command auto = new RunCommand(() -> m_romiDrivetrain.arcadeDrive(-1,0), m_romiDrivetrain).withTimeout(5)
     .alongWith(new RunCommand(m_Arm::RotateForward).withTimeout(1))
     .andThen(new RunCommand(m_Intake::spinout)).withTimeout(2)
     .andThen(new RunCommand(()-> m_romiDrivetrain.arcadeDrive(-1, 0))).withTimeout(2)
