@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Intake extends SubsystemBase{
-    private PWMVictorSPX coolspin = new PWMVictorSPX(5);
+    private PWMVictorSPX coolspin = new PWMVictorSPX(3);
   
     public Intake (){
         this.nocoolspin();

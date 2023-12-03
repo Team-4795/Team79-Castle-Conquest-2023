@@ -2,12 +2,13 @@ package frc.robot.subsystems;
 
 import javax.management.loading.PrivateClassLoader;
 
+import edu.wpi.first.wpilibj.motorcontrol.PWMTalonSRX;
 import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ArmSubsystem extends SubsystemBase {
-    private PWMVictorSPX RightArmMotor = new PWMVictorSPX(3);
-    private PWMVictorSPX LeftArmMotor = new PWMVictorSPX(4);
+    private PWMTalonSRX RightArmMotor = new PWMTalonSRX(4);
+    private PWMTalonSRX LeftArmMotor = new PWMTalonSRX(5);
 
     public ArmSubsystem (){
         RightArmMotor.setInverted(true);
