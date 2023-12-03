@@ -1,7 +1,12 @@
 {
   "NTProvider": {
     "types": {
-      "/FMSInfo": "FMSInfo"
+      "/FMSInfo": "FMSInfo",
+      "/LiveWindow/Ungrouped/DifferentialDrive[1]": "DifferentialDrive",
+      "/LiveWindow/Ungrouped/PWMTalonSRX[4]": "Motor Controller",
+      "/LiveWindow/Ungrouped/PWMTalonSRX[5]": "Motor Controller",
+      "/LiveWindow/Ungrouped/PWMVictorSPX[3]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Scheduler": "Scheduler"
     }
   }
 }
