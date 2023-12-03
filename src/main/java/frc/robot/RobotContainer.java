@@ -47,7 +47,7 @@ public class RobotContainer {
   public RobotContainer() {
 
     m_romiDrivetrain.setDefaultCommand(
-        new RunCommand(() -> m_romiDrivetrain.arcadeDrive(m_controller.getLeftY(), m_controller.getLeftX()), m_romiDrivetrain)
+        new RunCommand(() -> m_romiDrivetrain.arcadeDrive(m_controller.getLeftY(), m_controller.getRightX()), m_romiDrivetrain)
     );
 
     // Configure the button bindings
@@ -61,14 +61,14 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    m_controller.a().onTrue(Commands.runOnce(() -> {m_Arm.RotateForward();}, m_Arm));
-    m_controller.y().onTrue(Commands.runOnce(()->{m_Arm.RotateBackward();}, m_Arm));
-    m_controller.x().onTrue(Commands.runOnce(()->{m_Intake.spinin();}, m_Intake));
-    m_controller.b().onTrue(Commands.runOnce(()->{m_Intake.spinout();}, m_Intake));
-    m_controller.y().onFalse(Commands.runOnce(()->{m_Arm.STOP();}, m_Arm));
-    m_controller.a().onFalse(Commands.runOnce(() -> {m_Arm.STOP();}, m_Arm));
-    m_controller.x().onFalse(Commands.runOnce(()->{m_Intake.nocoolspin();}, m_Intake));
-    m_controller.b().onFalse(Commands.runOnce(()->{m_Intake.nocoolspin();}, m_Intake));
+    m_controller.leftTrigger().onTrue(Commands.runOnce(() -> {m_Arm.RotateForward();}, m_Arm));
+    m_controller.rightTrigger().onTrue(Commands.runOnce(()->{m_Arm.RotateBackward();}, m_Arm));
+    m_controller.rightBumper().onTrue(Commands.runOnce(()->{m_Intake.spinin();}, m_Intake));
+    m_controller.leftBumper().onTrue(Commands.runOnce(()->{m_Intake.spinout();}, m_Intake));
+    m_controller.rightTrigger().onFalse(Commands.runOnce(()->{m_Arm.STOP();}, m_Arm));
+    m_controller.leftTrigger().onFalse(Commands.runOnce(() -> {m_Arm.STOP();}, m_Arm));
+    m_controller.rightBumper().onFalse(Commands.runOnce(()->{m_Intake.nocoolspin();}, m_Intake));
+    m_controller.leftBumper().onFalse(Commands.runOnce(()->{m_Intake.nocoolspin();}, m_Intake));
 
 
   }
