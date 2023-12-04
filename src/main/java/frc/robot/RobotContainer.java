@@ -32,13 +32,7 @@ public class RobotContainer {
 
   private CommandXboxController m_controller = new CommandXboxController(0);
 
-  private Command auto = new RunCommand(() -> m_romiDrivetrain.arcadeDrive(-1,0), m_romiDrivetrain).withTimeout(5)
-    .alongWith(new RunCommand(m_Arm::RotateForward).withTimeout(1))
-    .andThen(new RunCommand(m_Intake::spinout)).withTimeout(2)
-    .andThen(new RunCommand(()-> m_romiDrivetrain.arcadeDrive(-1, 0))).withTimeout(2)
-    .alongWith(new RunCommand(m_Arm::RotateBackward).withTimeout(1))
-    .andThen(new RunCommand(()-> m_romiDrivetrain.arcadeDrive(0, 1))).withTimeout(.5)
-    .andThen(new RunCommand(()-> m_romiDrivetrain.arcadeDrive(1, 0))).withTimeout(3);
+  private Command auto = new RunCommand(() -> m_romiDrivetrain.arcadeDrive(1,0), m_romiDrivetrain).withTimeout(8);
 
 //All time in seconds MUST be changed after testing, they are just place holders
 
@@ -47,7 +41,7 @@ public class RobotContainer {
   public RobotContainer() {
 
     m_romiDrivetrain.setDefaultCommand(
-        new RunCommand(() -> m_romiDrivetrain.arcadeDrive(m_controller.getLeftY(), m_controller.getRightX()), m_romiDrivetrain)
+        new RunCommand(() -> m_romiDrivetrain.arcadeDrive(Math.pow(m_controller.getLeftY(), 3),0.7 *Math.pow(m_controller.getRightX(),3)) , m_romiDrivetrain)
     );
 
     // Configure the button bindings
